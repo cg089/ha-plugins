@@ -15,6 +15,7 @@ class IncomingCallEvent(TypedDict):
     event: Literal['incoming_call']
     caller: str
     parsed_caller: Optional[str]
+    to: str  # Neue Eigenschaft für die angerufene Nummer
     sip_account: int
 
 
