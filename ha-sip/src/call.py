@@ -186,6 +186,7 @@ class Call(pj.Call):
                 'event': 'timeout',
                 'caller': self.call_info['remote_uri'] if self.call_info else 'unknown',
                 'parsed_caller': self.call_info['parsed_caller'] if self.call_info else None,
+                'to': self.call_info['local_uri'] if self.call_info else None  # Hinzugefügter "to"-Wert
                 'sip_account': self.account.config.index,
                 'menu_id': self.menu['id']
             })
@@ -241,12 +242,14 @@ class Call(pj.Call):
                 'event': 'call_established',
                 'caller': self.call_info['remote_uri'] if self.call_info else 'unknown',
                 'parsed_caller': self.call_info['parsed_caller'] if self.call_info else None,
+                'to': self.call_info['local_uri'] if self.call_info else None  # Hinzugefügter "to"-Wert
                 'sip_account': self.account.config.index,
             }, self.webhook_to_call)
         self.trigger_webhook({
             'event': 'call_established',
             'caller': self.call_info['remote_uri'] if self.call_info else 'unknown',
             'parsed_caller': self.call_info['parsed_caller'] if self.call_info else None,
+            'to': self.call_info['local_uri'] if self.call_info else None  # Hinzugefügter "to"-Wert
             'sip_account': self.account.config.index,
         })
         self.handle_menu(self.menu)
@@ -270,6 +273,7 @@ class Call(pj.Call):
                 'event': 'call_disconnected',
                 'caller': self.call_info['remote_uri'],
                 'parsed_caller': self.call_info['parsed_caller'],
+                'to': self.call_info['local_uri'],
                 'sip_account': self.account.config.index,
             })
             self.connected = False
@@ -302,6 +306,7 @@ class Call(pj.Call):
             'event': 'dtmf_digit',
             'caller': self.call_info['remote_uri'] if self.call_info else 'unknown',
             'parsed_caller': self.call_info['parsed_caller'] if self.call_info else None,
+            'to': self.call_info['local_uri'] if self.call_info else None  # Hinzugefügter "to"-Wert
             'digit': pressed_digit,
             'sip_account': self.account.config.index,
         })
@@ -363,6 +368,7 @@ class Call(pj.Call):
                 'event': 'entered_menu',
                 'caller': self.call_info['remote_uri'] if self.call_info else 'unknown',
                 'parsed_caller': self.call_info['parsed_caller'] if self.call_info else None,
+                'to': self.call_info['local_uri'] if self.call_info else None  # Hinzugefügter "to"-Wert
                 'menu_id': menu_id,
                 'sip_account': self.account.config.index,
             })
@@ -433,6 +439,7 @@ class Call(pj.Call):
                 'sip_account': self.account.config.index,
                 'caller': self.call_info['remote_uri'] if self.call_info else 'unknown',
                 'parsed_caller': self.call_info['parsed_caller'] if self.call_info else None,
+                'to': self.call_info['local_uri'] if self.call_info else None  # Hinzugefügter "to"-Wert
                 'type': 'audio_file',
                 'audio_file': self.current_playback['audio_file']
             })
@@ -442,6 +449,7 @@ class Call(pj.Call):
                 'sip_account': self.account.config.index,
                 'caller': self.call_info['remote_uri'] if self.call_info else 'unknown',
                 'parsed_caller': self.call_info['parsed_caller'] if self.call_info else None,
+                'to': self.call_info['local_uri'] if self.call_info else None  # Hinzugefügter "to"-Wert
                 'type': 'message',
                 'message': self.current_playback['message']
             })
