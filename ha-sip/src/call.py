@@ -160,6 +160,7 @@ class Call(pj.Call):
                 'event': 'ring_timeout',
                 'caller': self.call_info['remote_uri'] if self.call_info else 'unknown',
                 'parsed_caller': self.call_info['parsed_caller'] if self.call_info else None,
+                'to': self.call_info['local_uri'] if self.call_info else None  # Hinzugefügter "to"-Wert
                 'sip_account': self.account.config.index,
             })
             log(self.account.config.index, 'Ring timeout of %s triggered' % self.ring_timeout)
