@@ -87,6 +87,7 @@ class Account(pj.Account):
             'event': 'incoming_call',
             'caller': ci['remote_uri'],
             'parsed_caller': ci['parsed_caller'],
+            'to': ci['local_uri']  # Hinzugefügter "to"-Parameter
             'sip_account': self.config.index,
         })
 
